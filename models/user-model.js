@@ -1,27 +1,24 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb://localhost:27017/VividLuxury")
-
-const userScema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     fullname: String,
     email: String,
     password: String,
-    isAdmin:Boolean,
-    cart:[
+    cart:
         {
         type:Array,
         default:[]
         }
-    ],
-    orders:[
+    ,
+    orders:
         {
             type:Array,
             default:[]
         }
-    ],
+    ,
     contact:Number,
     picture:String
 
 })
 
-module.exports = mongoose.model("user",userScema);
+module.exports = mongoose.model("user",userSchema);
