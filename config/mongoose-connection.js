@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
+const debug = require("debug")("development:mongoose"); 
+const config = require('config')
+
+mongoose.set('debug', true);
 
 mongoose
-.connect("mongodb://localhost:27017/VividLuxury")
+.connect(`${config.get("MONGODB_URI")}/VividLuxury`)
 .then(function(){
-    console.log("Connected");
+    debug("Connected");
 })
 .catch(function(err){
-    console.log(err);
+    debug(err);
 })
 
 module.exports = mongoose.connection;
