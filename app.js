@@ -41,10 +41,7 @@ app.use("/owners",ownersRouter)
 app.use("/users",usersRouter)
 app.use("/products",productsRouter)
 
-app.get("/logout",function(req,res){
-    res.cookie("token","")
-    res.redirect("/")
-})
+
 
 app.listen(3000,function(req,res){
     
