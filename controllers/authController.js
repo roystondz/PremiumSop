@@ -11,7 +11,8 @@ module.exports.registerUser = async function(req,res){
 
         let userSearch = await userModel.findOne({email});
         if(userSearch){
-            return res.status(401).send({message:"Email already exist"})
+            req.flash('error','Email already exists')
+            return res.status(401).redirect("/")
         }
         else{
         bcrypt.genSalt(12,function(err,salt){

@@ -3,36 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Vivid Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-    <!-- Header -->
-    <header class="bg-blue-600 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-lg font-bold"><a href="/">E-Shop</a></h1>
-            <form action="/search" method="GET" class="flex items-center">
-                <input type="text" name="query" placeholder="Search..." class="p-2 rounded-l border">
-                <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded-r">Search</button>
-            </form>
-            <div class="space-x-4">
-                <a href="/login" class="hover:underline">Login</a>
-                <a href="/cart" class="hover:underline">Cart</a>
-            </div>
-        </div>
-    </header>
+<body class="w-full h-full bg-white">
+    <div class="p-10 flex">
+        <h1 class="text-3xl  header tracking-tigher">Vivid <span class="text-blue-500">Luxury</span></h1>
+        <a href="/users/logout" class="text-white px-3 py-2 bg-red-500 rounded-md ml-auto">Logout</a>
+    </div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto py-8">
-        <h2 class="text-2xl font-bold text-center mb-8">All Products</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-blue-600 text-white text-center py-4 mt-8">
-        &copy; 2024 E-Shop. All rights reserved.
-    </footer>
+    <div class="footer py-3  text-center bg-blue-300 text-white">
+        <footer class="w-full">All rights reserved @2024 </footer>
+    </div>
 </body>
 </html>
