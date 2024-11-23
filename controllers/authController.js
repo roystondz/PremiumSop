@@ -24,7 +24,7 @@ module.exports.registerUser = async function(req,res){
                 })
                 let token = generateToken(user);
                 res.cookie("token",token);
-                res.send("User created succesfuly")
+                res.redirect("/shop")
             })
         })
         
@@ -44,11 +44,12 @@ module.exports.loginUser = async function(req,res){
             return res.status(401).send({message:"Email not found"})
         }
         
+        
             bcrypt.compare(password,userSearch.password,function(err,match){
                 if(match){
                     let token = generateToken(userSearch);
                     res.cookie("token",token)
-                    res.send("User can login")
+                    res.redirect("/shop")
                 }else{
                     return res.status(401).send({message:"Password is incorrect"})
                 }
