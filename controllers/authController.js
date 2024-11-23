@@ -41,7 +41,9 @@ module.exports.loginUser = async function(req,res){
         let {email,password} = req.body;
         let userSearch = await userModel.findOne({email});
         if(!userSearch){
-            return res.status(401).send({message:"Email not found"})
+             req.flash('error',"Email or password incorrect")
+             return res.status(401).redirect("/") 
+            //.send({message:"Email not found"})
         }
         
         
@@ -51,10 +53,12 @@ module.exports.loginUser = async function(req,res){
                     res.cookie("token",token)
                     res.redirect("/shop")
                 }else{
-                    return res.status(401).send({message:"Password is incorrect"})
+                    req.flash('error',"Email or password incorrect")
+                     return res.status(401).redirect("/")
+                     //.send({message:"Password is incorrect"})
                 }
             })
-    }catch{
+    }catch(err){
         console.log(err.message);
         
     }

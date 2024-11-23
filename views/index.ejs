@@ -7,6 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="w-full h-full bg-white-100">
+    <% if (error.length>0) { %><div class="error absolute top-5 bg-red-500 -translate-x-1/2 -translate-y-1/2 left-1/2 rounded-md px-3">
+        <span class="inline-block mt-1 mb-2 text-white"><%=error%></span>
+    </div>
+    <%}%>
     <div class="p-10 text-4xl tracking-tighter bg-blue-100 mb-10">
         <h1>Vivid Luxury</h1>
     </div>
