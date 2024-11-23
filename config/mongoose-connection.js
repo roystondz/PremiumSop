@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const debug = require("debug")("development:mongoose"); 
 const config = require('config')
 
-mongoose.set('debug', true);
 
 mongoose
 .connect(`${config.get("MONGODB_URI")}/VividLuxury`)
