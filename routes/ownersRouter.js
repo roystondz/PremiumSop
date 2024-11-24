@@ -2,8 +2,9 @@ const express  = require('express')
 const router = express.Router();
 const ownerModel = require('../models/owner-model');
 
-router.get("/",function(req,res){
-    res.send("Hello World from owner");
+router.get("/admin",function(req,res){
+    let msg = req.flash("uploadfile")
+    res.render("createProducts",{msg});
 })
 
 if(process.env.NODE_ENV === "development"){

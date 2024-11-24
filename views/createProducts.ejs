@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <% if (msg.length>0) { %><div class="error absolute top-5 bg-blue-500 -translate-x-1/2 -translate-y-1/2 left-1/2 rounded-md px-3">
+        <span class="inline-block mt-1 mb-2 text-white"><%=msg%></span>
+    </div>
+    <%}%>
+    <div class="p-10 flex bg-blue-100">
+        <h1 class="text-3xl  header tracking-tigher">Vivid <span class="text-blue-500">Luxury</span></h1>
+        <a href="/users/logout" class="text-white px-3 py-2 bg-red-500 rounded-md ml-auto">Logout</a>
+    </div>
+    <div class="heading flex">
+        <h1 class="tracking-tigher text-xl p-10">Admin Panel</h1>
+        <h1 class="tracking-tigher text-l font-bold p-20 left-56 absolute">Create New Product</h1>
+    </div>
+    <div class="flex  gap-10 p-10">
+        <div class="navigator ">
+            <a href="/shop">All products</a><br>
+            <a href="/owners/admin">Create product</a>
+        </div>
+        <div class="create-form mr-auto ml-32 w-1/2">
+            
+            <form action="/products/create" method="post" enctype="multipart/form-data">
+                <h1 class="font-bold">Product details</h1>
+                <h1>Product Image</h1>
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="file" placeholder="Select file" name="image">
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="text" name="name" placeholder="Product name">
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="text" name="price" placeholder="Price">
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="text" name="discount" placeholder="Discount Price">
+
+                <h1 class="font-bold mt-2">Panel Details</h1>
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="text" name="bgcolor" placeholder="Background Color">
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="text" name="panelcolor" placeholder="Panel Color">
+                <input class="px-3 py-2 outline-none border-[1px] border-zinc-600 rounded-md mt-2" type="text" name="textcolor" placeholder="Text Color">
+                <input class="px-3 py-2 outline-none bg-blue-300 rounded-md mt-2" type="submit" value="Create new Product">
+            </form> 
+        </div>
+    </div>
+</body>
+</html>

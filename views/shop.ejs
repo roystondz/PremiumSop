@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivid Luxury</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="w-full h-full bg-white">
     <div class="p-10 flex">
@@ -12,6 +13,52 @@
         <a href="/users/logout" class="text-white px-3 py-2 bg-red-500 rounded-md ml-auto">Logout</a>
     </div>
 
+    <div class="conatiner flex p-6">
+        <div class="w-1/4 ml-8 p-6">
+            <label for="sort">Sort by</label>
+            <select class="border-2 rouded-lg px-3 py-2 ml-1" id="sort" name="sort">
+                <option value="latest">Latest</option>
+                <option value="oldest">Olddet</option>
+            </select>
+            <div class="links flex flex-col mt-10 tracking-tight font-[1px]">
+                <a href="">New Collection</a>
+                <a href="">All Products</a>
+                <a href="">Discounted Porducts</a>
+            </div>
+            <div class="filter mt-10">
+                <label for="sort">Filter</label>
+                <select class="border-2 rouded-lg px-3 py-2 ml-1" id="filter" name="filter">
+                    <option value="availability">Availability</option>
+                    <option value="discount">Discount</option>
+                </select>
+            </div>
+        </div>
+        <div class="grid lg:grid-cols-4 gap-4 p-6 w-3/4 sm:grid-cols-2">
+            <% if(products.length > 0)  {%>
+                <% products.forEach(function(product) { %>
+                    <div class=" h-64 w-52 ">
+                        <div class="image-section flex justify-center items-center h-48 bg-[<%= product.bgcolor %>] rounded-md">
+                            <img class="h-[12rem] " src="data:image/jpeg;base64,<%= product.image.toString('base64')%>">
+                        </div>
+                        <div class="image description p-2 flex justify-between items-center rounded-md bg-[<%= product.panelcolor %>] text-[<%= product.textcolor %>]">
+                            <div>
+                                <h1 class="tracking-tighter"><%=product.name%></h1>
+                                <p class="tracking-tighter">₹<%= product.price %></p>
+                            </div>
+                            <a class="add-option p-5 ml-auto bg-gray-300 h-7 w-7 rounded-full flex items-center justify-center">
+                                <i class="ri-add-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                <%})%>
+            <%} else { %>
+                <div class="bg-red-100 text-red-800 border border-red-200 p-4 rounded-lg text-center font-semibold shadow-md w-80 mx-auto w-72">
+                    <p>Products Not Available</p>
+                </div>
+                <%}%>
+        </div>
+    </div>
     <div class="footer py-3  text-center bg-blue-300 text-white">
         <footer class="w-full">All rights reserved @2024 </footer>
     </div>

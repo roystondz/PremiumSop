@@ -1,0 +1,14 @@
+<div class=" h-64 w-52 bg-[<%= product.panelcolor %>] rounded-md">
+    <div class="image-section h-48  rounded-md">
+        <img class="w-full h-full object-cover  bg-blend bg-opacity-0" src="data:image/jpeg;base64,<%= product.image.toString('base64')%>">
+    </div>
+    <div class="image description p-2 flex rounded-md bg-[<%= product.bgcolor %>] text-[<%= product.textcolor %>]">
+        <div>
+            <h1 class="tracking-tighter"><%=product.name%></h1>
+            <p class="tracking-tighter">₹<span><%= product.price %></span></p>
+        </div>
+        <a class="add-option p-5 ml-auto bg-gray-300 h-7 w-7 mt-1 rounded-full flex items-center justify-center">
+            <i class="ri-add-line"></i>
+        </a>
+    </div>
+</div>
