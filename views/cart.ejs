@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="w-full h-full bg-white">
+    <div class="p-10 flex justify-between">
+        <h1 class="text-3xl  header tracking-tigher">Vivid <span class="text-blue-500">Luxury</span></h1>
+        <div class="text-xl flex gap-3 font-['helvetica_now_display']">
+            <a href="/shop" class="text-black px-3 py-2 ">Shop</a>
+            <a href="/cart" class="text-black px-3 py-2 ">My Cart</a>
+            <a href="" class="text-black px-3 py-2 ">My Account</a>
+            <a href="/users/logout" class="text-red-600 px-3 py-2 ml-auto ">Logout</a>
+        </div>
+    </div>
+    <% if(user.cart.length > 0){%>
+    <% let ptpay=0; %>
+    <% user.cart.forEach(function(product){%>
+        <% let total=0; %>
+        
+        <div class="conatiner flex p-6">
+        <div class="w-1/4 ml-8 p-6">
+            <div class="flex bg-[<%=product.bgcolor%>] h-72 rounded-t-md items-center justify-center">
+                <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64')%>">
+            </div>            
+            <div class="mb-0 bg-[<%= product.panelcolor %>] h-16 flex p-4 text-xl">
+                <h1 class="text-[<%= product.textcolor %>]" ><%= product.name %></h1>
+                <div class="add function ml-auto flex gap-3">
+                    <a  href="" class="add-option p-5 ml-auto bg-gray-300 h-7 w-7 rounded-full flex items-center justify-center">
+                        <i class="ri-add-line"></i>
+                    </a>
+                    <div class="bg-white px-2 rounded-md">01</div>
+                    <a  href="" class="add-option p-5 ml-auto bg-gray-300 h-7 w-7 rounded-full flex items-center justify-center">
+                        <i class="ri-subtract-line"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mb-0 bg-[<%= product.panelcolor %>] h-12 rounded-b-md flex justify-between items-center p-4">
+                <h1 class="text-[<%=product.textcolor %>]">Net Total</h1>
+                <h1 class="text-[<%=product.textcolor %>]"><%=product.price%></h1>
+            </div>
+        </div>
+        <div class="flex flex-col  p-8 w-1/2 mt-0">
+            <div >
+                <h1 class="font-bold text-2xl ">Pricing </h1>
+            </div>
+            <div class=" gap-3 product information w-3/5 text-xl p-6 tracking-tighter">
+                <div class="flex justify-between">
+                    <h1 class="text-xl tracking-tighter mt-3">MRP  </h1>
+                    <h1 class="text-xl tracking-tighter mt-3"><%=product.price%>  </h1>
+                    <% total+=product.price; %>
+                    <% ptpay+=product.price; %>
+                </div>
+                <div class="flex justify-between">
+                    <h1 class="text-xl tracking-tighter mt-3">Discount  </h1>
+                    <h1 class="text-xl tracking-tighter mt-3"><%=product.discount%>  </h1>
+                    <% total-=product.discount; %>
+                    <% ptpay-=product.discount; %>
+                </div>
+                <div class="flex justify-between">
+                    <h1 class="text-xl tracking-tighter mt-3">Platform Fee  </h1>
+                    <h1 class="text-xl tracking-tighter mt-3">FREE  </h1>
+                </div>
+                <div class="flex justify-between">
+                    <h1 class="text-xl tracking-tighter mt-3">Delivery Fee  </h1>
+                    <h1 class="text-xl tracking-tighter mt-3">40  </h1>
+                    <% total+=40; %>
+                    <% ptpay+=40; %>
+                </div>
+                <hr class="mt-3 mx-100 border-2 border-black">
+                <div class="flex justify-between">
+                    <h1 class="text-xl tracking-tighter mt-3 text-green-500">Total Amount  </h1>
+                    <h1 class="text-xl tracking-tighter mt-3 font-bold text-green-500">₹<span>
+                        <%=total%>
+                    </span>  </h1>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <%}) } else {%>
+        <div class="flex flex-col items-center justify-center h-64 bg-gray-100 border border-gray-300 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18l-2 14H5L3 3zm6 14h6m-6 0a3 3 0 006 0m-6 0a3 3 0 01-6 0M7 9h10m-2 0a2 2 0 10-4 0m4 0H9" />
+            </svg>
+            <h2 class="text-lg font-semibold text-gray-700">Your cart is empty</h2>
+            <p class="text-gray-500 text-sm">Start adding items to your cart now!</p>
+            <a href="/shop" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                Go Shopping
+            </a>
+        </div>        
+    <%}%> 
+       <div class="footer py-3  text-center bg-blue-300 text-white">
+        <footer class="w-full">All rights reserved @2024 </footer>
+    </div>
+</body>
+</html>

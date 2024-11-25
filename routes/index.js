@@ -26,4 +26,13 @@ router.get("/addtocart/:id",isLoggedIn,async(req,res)=>{
     
 })
 
+router.get("/cart",isLoggedIn,async(req,res)=>{
+    let products = await productModel.find();
+    let user = await userModel
+        .findOne({email:req.user.email})
+        .populate("cart") //since cart is an array of product ids
+    user.cart
+    res.render("cart",{user})
+})
+
 module.exports = router;
