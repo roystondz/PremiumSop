@@ -35,4 +35,21 @@ router.get("/cart",isLoggedIn,async(req,res)=>{
     res.render("cart",{user})
 })
 
+router.get("/account",isLoggedIn,async function(req,res){
+    let user  = await userModel.findOne({email:req.user.email});
+    let msg = req.flash("done")
+    res.render("myaccount",{user,msg});
+})
+
+router.post("/account/update",isLoggedIn,async function(req,res){
+    let {email , fullname,contact} = req.body;
+    let updatedUser = await userModel.findOneAndUpdate({email:req.user.email},{
+        email,
+        fullname,
+        contact
+    },{new:true})
+    req.flash("done","Account updated")
+    res.redirect("/account");
+})
+
 module.exports = router;

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="w-full h-full bg-white">
+    <% if (msg.length>0) { %><div class="error absolute top-5 bg-blue-500 -translate-x-1/2 -translate-y-1/2 left-1/2 rounded-md px-3">
+        <span class="inline-block mt-1 mb-2 text-white"><%=msg%></span>
+    </div>
+    <%}%>
+    <div class="p-10 flex justify-between">
+        <h1 class="text-3xl  header tracking-tigher">Vivid <span class="text-blue-500">Luxury</span></h1>
+        <div class="text-xl flex gap-3 font-['helvetica_now_display']">
+            <a href="/shop" class="text-black px-3 py-2 ">Shop</a>
+            <a href="/cart" class="text-black px-3 py-2 ">My Cart</a>
+            <a href="/account" class="text-black px-3 py-2 ">My Account</a>
+            <a href="/users/logout" class="text-red-600 px-3 py-2 ml-auto ">Logout</a>
+        </div>
+    </div>
+
+    <div class="conatiner flex p-6">
+        <div class="w-1/4 ml-8 p-6">
+            <h1 class="tracking-tighter text-3xl mb-2 font-semibold">Account Information</h1>
+            <form action="/account/update" method="post" >
+               
+                <input type="text" name="fullname" placeholder="Full name  " class="px-3 py-2 border-2 border-zinc-600 mb-2 rounded-md" value="<%= user.fullname%>">
+                <input type="text" name="email" placeholder="Email" class="px-3 py-2 border-2 border-zinc-600 rounded-md mb-2" value="<%= user.email %>">
+                <input type="number" name="contact" placeholder="Contact Number" class="px-3 py-2 border-2 border-zinc-600 mb-2 rounded-md" value="<%= user.contact %>">
+                <br>
+                <input type="submit" value="Save changes" class="text-white px-3 py-2 tracking-tighter bg-blue-500 rounded-md">
+            </form>
+        </div>
+        <div class="grid lg:grid-cols-4 gap-4 p-6 w-3/4 sm:grid-cols-2">
+            
+        </div>
+    </div>
+    <div class="footer py-3  text-center bg-blue-300 text-white fixed bottom-0 w-full">
+        <footer class="w-full">All rights reserved @2024 </footer>
+    </div>
+</body>
+</html>
