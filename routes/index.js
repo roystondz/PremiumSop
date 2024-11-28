@@ -51,5 +51,11 @@ router.post("/account/update",isLoggedIn,async function(req,res){
     req.flash("done","Account updated")
     res.redirect("/account");
 })
+router.get("/account/deletion",isLoggedIn,async function(req,res){
+    let user = await userModel.findOneAndDelete({email:req.user.email});
+    req.flash("error","User successfully deleted")
+    res.redirect("/");
+})
+
 
 module.exports = router;
